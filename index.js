@@ -1,5 +1,26 @@
-const express = require('express')
+import "core-js";
+import express from "express";
+import morgan from "morgan";
+import helmet from "helmet";
+import cookieParser from "cookie-parser";
+import bodyParser from "bpdy-parser";
+
 const app = express()
+const PORT = 4000;
+
+const handleListening = () =>
+    console.log(`Listening on: http://localhost:${PORT}`);
 
 
-app.listen(4000);
+const handleHome = (req, res) => res.send("Hello from my ass!");
+
+const handleProfile = (req, res) => res.send("You are on my profile ");
+
+app.use(helmet());
+app.use(morgan("dev"));
+
+app.get("/", handleHome);
+app.get("/profile", handleProfile);
+
+
+app.listen(4000, handleListening);
