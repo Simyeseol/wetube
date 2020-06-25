@@ -1,4 +1,4 @@
-import { videos } from "../db"
+
 import { response } from "express";
 import routes from "../routes"
 
